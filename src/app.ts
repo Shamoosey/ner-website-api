@@ -6,6 +6,7 @@ import { useExpressServer } from "routing-controllers";
 import morgan from "morgan";
 import corsOptions from "./config/corsOptions";
 import { setupSwagger } from "./config/swagger";
+import { AppController } from "./api/v1/controllers/app.controller";
 
 const app = express();
 
@@ -16,7 +17,7 @@ app.use(morgan(process.env.NODE_ENV === "production" ? "combined" : "dev"));
 
 useExpressServer(app, {
   routePrefix: "/api/v1",
-  controllers: [__dirname + "/api/v1/controllers/*.ts"],
+  controllers: [AppController],
   cors: corsOptions,
 });
 
@@ -25,6 +26,10 @@ dotenv.config();
 const PORT = process.env.PORT ?? 3000;
 
 setupSwagger(app, PORT);
+
+app.get("/", (_req, res) => {
+  res.send("Got response from backend!");
+});
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
