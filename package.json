@@ -14,7 +14,7 @@
     "prisma:migrate-dev": "prisma migrate dev",
     "prisma:migrate-deploy": "prisma migrate deploy",
     "prisma:seed": "prisma db seed",
-    "vercel-build": "npm run prisma:generate && npm run prisma:migrate && npm run build"
+    "vercel-build": "npm run prisma:generate && npm run prisma:migrate-dev && npm run build"
   },
   "dependencies": {
     "@prisma/adapter-pg": "^7.2.0",
