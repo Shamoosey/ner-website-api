@@ -5,7 +5,6 @@ import dotenv from "dotenv";
 import { useExpressServer } from "routing-controllers";
 import morgan from "morgan";
 import corsOptions from "./config/corsOptions";
-import { setupSwagger } from "./config/swagger";
 import { AppController } from "./api/v1/controllers/app.controller";
 
 const app = express();
@@ -24,8 +23,6 @@ useExpressServer(app, {
 dotenv.config();
 
 const PORT = process.env.PORT ?? 3000;
-
-setupSwagger(app, PORT);
 
 app.get("/", (_req, res) => {
   res.send("Got response from backend!");

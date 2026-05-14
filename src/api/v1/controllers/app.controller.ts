@@ -7,10 +7,20 @@ import { successResponse } from "../models/responseModel";
 @Controller()
 export class AppController {
   @Get("/shows")
-  async getAll(@Req() req: Request, @Res() res: Response) {
+  async getShows(@Req() req: Request, @Res() res: Response) {
     try {
-      const users = await AppService.fetchAllShows();
-      return res.status(200).json(successResponse(users, "Shows retrieved successfully"));
+      const shows = await AppService.fetchAllShows();
+      return res.status(200).json(successResponse(shows, "Shows retrieved successfully"));
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  @Get("/linktree")
+  async getLinkTree(@Req() req: Request, @Res() res: Response) {
+    try {
+      const links = await AppService.fetchLinkTree();
+      return res.status(200).json(successResponse(links, "LinkTree retrieved successfully"));
     } catch (error) {
       throw error;
     }
