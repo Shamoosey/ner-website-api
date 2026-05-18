@@ -31,10 +31,10 @@ export class AppController {
   @Post("/refreshCache")
   async refreshCache(@Req() req: Request, @Res() res: Response) {
     if (req.headers["x-admin-key"] !== process.env.ADMIN_KEY) {
-      return res.sendStatus(401);
+      return res.status(401).send({ message: "Unauthorized" });
     }
     deleteCache(CacheItem.LinkTree);
     deleteCache(CacheItem.UpcomingShows);
-    res.sendStatus(200);
+    return res.status(200).send({ message: "Cache refreshed" });
   }
 }
