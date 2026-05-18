@@ -17,5 +17,5 @@ export const fetchAllShows = async (): Promise<ShowItem[]> => {
 
 export const fetchLinkTree = async (): Promise<LinkTree[]> => {
   const rows = await getRows("LinkTree");
-  return rows.filter(([, , , , , hidden]) => hidden !== "TRUE").map(([text, url, icon]) => ({ text, url, icon }));
+  return rows.filter(([, , , hidden]) => hidden !== "TRUE").map(([text, url, icon]) => ({ text, url, icon }));
 };
