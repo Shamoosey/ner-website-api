@@ -1,4 +1,4 @@
-import cache from "./cache.client";
+import { cache } from "./cache.client";
 import sheets, { SPREADSHEET_ID } from "./sheets.client";
 
 export async function getRows(sheetName: string): Promise<string[][]> {
