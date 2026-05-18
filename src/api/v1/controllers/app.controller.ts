@@ -30,7 +30,7 @@ export class AppController {
 
   @Post("/refreshCache")
   async refreshCache(@Req() req: Request, @Res() res: Response) {
-    if (req.headers["x-admin-key"] !== process.env.ADMIN_KEY) {
+    if (req.headers["x_admin_key"] !== process.env.ADMIN_KEY) {
       return res.status(401).send({ message: "Unauthorized" });
     }
     deleteCache(CacheItem.LinkTree);
